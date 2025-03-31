@@ -1,0 +1,908 @@
+body {
+    margin: 0;
+    font-family: 'Whyte', sans-serif;
+}
+
+header {
+    background-color: white;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    z-index: 100;
+}
+
+#linksLEFT, #linksRIGHT {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+nav a {
+    font-size: 12px;
+    color: black;
+    margin: 0 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+#logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav img {
+    height: 20px;
+    width: 133px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #F5F5F5;
+    border-radius: 15px;
+    padding: 5px;
+    gap: 5px;
+}
+
+.search-icon {
+    width: 16px;
+    height: 16px;
+
+}
+.search-input::placeholder {
+    color: black; 
+}   
+
+.search-input {
+    border: none;
+    outline: none;
+    font-size: 12px;
+    background-color: transparent;
+    flex: 1;
+}
+
+/* BOX */
+.box-slideshow {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    margin-top: 47px;
+}
+
+
+.box-image {
+    width: 100%;
+}
+
+.box-text {
+    position: fixed;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    color: white;
+    font-size: 2.5rem;
+    text-transform: lowercase;
+    text-align: center;
+    white-space: nowrap;    
+}
+
+/* PRODOTTI */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items */
+    gap: 5px;
+    width: 100%;
+    max-width: 100vw; /* Previene overflow */
+    padding: 0;
+    overflow-x: hidden; /* Previene scroll orizzontale */
+    margin-top: 5px;
+}
+
+.product-item {
+    flex: 0 0 calc(16.666% - 5px); /* 6 items per row, 5px sono il gap con i bordi */
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background: white;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-item img {
+    width: 100%;
+    height: auto; /* Mantiene le proporzioni */
+    object-fit: cover; /* Evita lo "zoom" lo posso usare?*/
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-item:hover img {
+    transform: scale(1.1);
+}
+
+.product-text {
+    position: absolute;
+    top: 50%; /* Posiziona il testo al centro verticale */
+    left: 50%; /* Posiziona il testo al centro orizzontale */
+    transform: translate(-50%, -50%); /* Centra esattamente il testo */
+    color: white; 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    pointer-events: none; /* Impedisce che il testo interferisca con il mouse lo posso usare?*/
+}
+/* FONT */
+@font-face {
+    font-family: 'Whyte';
+    src: url('../mhw1/fonts/ABCWhyte-Regular.woff2') format('woff2'),
+         url('../mhw1/fonts/ABCWhyte-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Whyte';
+    src: url('../mhw1/fonts/ABCWhyte-Bold.woff2') format('woff2'),
+         url('../mhw1/fonts/ABCWhyte-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+/* OUTOFCORE */
+.outofcore-img{
+    padding-top: 0;
+    width: 100%; 
+    height: auto; 
+    display: block; /* Evita spazi indesiderati sotto l'immagine */
+}
+
+.flex-container {
+    display: flex;
+    /*QUI DOVREI RENDERE LA SCHERMATA LOCKATA *TIPO* */
+    flex-direction: column; /* dispone gli elementi in colonna */
+    gap: 5px; /* spaziatura tra la griglia e l'immagine */
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+    padding: 0;
+    overflow-x: hidden;
+    margin-top: 680px;
+}
+.slide_container {
+    position: relative;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.outofcore-img {
+    width: 100%;
+    display: block;
+    height: auto;
+    object-fit: cover;
+}
+
+.text_wrapper {
+    position: absolute;
+    bottom: 15%; /* Allinea il testo più in basso */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    width: 100%;
+    line-height: 1.4;
+    z-index: 2;
+}
+
+.text_wrapper p {
+    margin: 0;
+    font-size: 1rem;
+    letter-spacing: 0.1vw;
+    line-height: 1.125rem;
+}
+
+.text_wrapper h2 {
+    font-weight: 900;
+    margin-top: 5px;
+    font-size: 2.5rem;
+    line-height: 2.25rem;
+    text-transform: lowercase;
+}
+.text_wrapper a{
+    font-size: 14px;
+    max-width: 600px; /* Limita la larghezza del testo */
+    margin: 0;
+    background-color: white;
+    color: black;
+    padding: 15px 20px 15px 20px;
+    border-radius: 30px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+/* GET THE LOOK */
+.rett-nero   {
+    background-color: black;
+    color: white;
+    padding-bottom: 40px;
+    margin-top: -5px;
+}
+.get-the-look {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 40px 32px 20px;
+
+    width: 100%; 
+    position: relative; 
+    margin-top: -10px; /* aggiusta la distanza per sovrapporlo leggermente */
+ 
+}
+.gtl-text-container{
+    display: flex;
+    justify-content: row;
+    align-items: center;
+    gap: 1.25rem;
+
+}
+.gtl-text-container h1{ 
+    font-size: 2.5rem;
+    font-weight: 100;
+    margin: 0; /* centra il contenitore */
+    padding-left: 40px;
+
+}
+.gtl-text-container  p{
+    font-size: 14px;
+    margin: 0;
+}
+.cta-button {
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    padding: 6px 12px; 
+    border-radius: 30px; 
+    transition: all 0.3s ease-in-out;
+    white-space: nowrap; /* Evita il ritorno a capo, ha senso?*/
+    margin-right: 50px;
+}
+
+.cta-button:hover {
+    background-color: white;
+    color: black;
+}
+/* LOOK GALLERY */
+.look-gallery {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* assicura che tutti i div abbiano la stessa altezza */
+}
+
+.look-card {
+    position: relative;
+    width: 24%; /* per avere 4 colonne, quale metodo è il migliore */
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.look-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+}
+.look-card p {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+/* SUGGESTED PRODUCTS */
+.suggested-text h2{ /*perchè senza h1 non mi da la freccia? si crea una freccia a causa del size(?)*/
+    font-size: 2.5rem;
+    font-weight: 100;
+    margin: 0; 
+    padding-left: 40px;
+    text-transform: uppercase;
+    padding: 30px 32px 20px;
+    font-size: 3rem;
+}
+.products {
+    display: flex;
+    grid-template-columns: repeat(4, minmax(150px, 1fr)); /* griglia responsiva */
+    gap: 5px; 
+    width: 100%;
+    padding-bottom: 60px;
+}
+
+.suggested-product {
+    display: flex;
+    flex-direction: column; /* allinea immagine, titolo e prezzo in colonna */
+    justify-content: space-between; /* distribuisce lo spazio in modo uniforme */
+    align-items: start; 
+    text-align: start;
+    width: calc(25% - 5px); /* i px sono il gap */
+}
+.suggested-product:hover{
+    cursor: pointer;
+}
+.suggested-product h3, .suggested-product .price {
+    padding-left: 4%;
+    margin: 0; 
+}
+
+.suggested-product img {
+    width: 100%;
+    height: auto; 
+    object-fit: contain; /* evita il ritaglio delle immagini */
+    border-radius: 5px;
+}
+
+.suggested-product h3 {
+    font-size: .75rem;
+    font-weight: bold;
+    margin-top: 5px;
+    width: 100%; 
+}
+
+.suggested-product .price {
+    font-size: .75rem;
+    margin-top: 2px; 
+}
+/* BERSHKA MUSIC */
+.bershka-music {
+    width: 100%;
+    height: auto; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+.bershka-music:hover{
+    cursor: pointer;
+}
+.bershka-music img {
+    width: 100%; 
+    height: auto; 
+}
+/* SPAM SCONTO */
+.spam-conto{
+    background-color: black;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start; 
+    align-items: center;
+    margin-top: -5px;
+    color: white; 
+    text-align: center; /* Centra il testo */
+    padding: 40px 0px 80px 0px;
+}
+
+
+.spam-conto h2 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.spam-conto p {
+    font-size: 16px;
+    font-weight: 100;
+    margin: 0 auto 20px auto; /* Centra il testo */
+}
+.spam-conto a {
+    font-size: 14px;
+    max-width: 600px; 
+    background-color: white;
+    color: black;
+    padding: 15px 20px 15px 20px;
+    border-radius: 30px;
+}
+.spam-conto a:hover {
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    background-color: #f8f8f8;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    width: 20%;
+    min-width: 150px;
+    margin-bottom: 20px;
+}
+.wa-icon {
+    width: 16px; 
+    height: auto; 
+    vertical-align: middle; 
+    margin-right: 5px; 
+    
+}
+.footer-column p{
+    font-size: 12px;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: black;
+    font-size: 14px;
+    text-decoration: none;  
+
+}
+
+.footer-column ul li a:hover {
+    cursor: pointer;
+}
+
+.small-text {
+    font-size: 12px;
+    color: gray;
+}
+
+.online {
+    color: green;
+    font-weight: bold;
+}
+
+.social-icons a {
+    font-size: 18px;
+    margin-right: 10px;
+    color: black;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: gray;
+}
+.rett-nero, .products, .bershka-music, .spam-conto, .suggested-text, footer, .background-bianco{
+    position: relative;
+}
+.background-bianco{
+    width: 100%;
+    height: auto;
+    background-color: white;
+}
+
+
+/* MOBILE */
+#menu-mobile {
+    display: none;
+}
+  
+/* menu hamburger */
+#menu-mobile {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+/* linee dell’hamburger */
+#menu-mobile div {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    border-radius: 5px;
+}
+
+
+@media (max-width: 500px) {
+    body {
+        width: 100%;
+        height: auto;
+        overflow-x: hidden;    
+    }
+   .navbar-container{
+    background-color: whitesmoke;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: start;
+    padding: 5x;
+    width: 100%;
+    border : none;
+   }
+   
+    #linksLEFT a {
+        display: none;
+    }
+
+    #menu-mobile {
+        display: flex; 
+    }
+
+   .search-container{
+        display: none;
+   }
+   #logo {
+    position: relative;
+    display: none;
+    justify-content: flex-start;
+    margin-left: -50px; 
+    }
+    #linksRIGHT a {
+        position: relative;
+
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .box-image img {
+        width: 100%;
+        height: auto;
+        object-fit: fill; /* Mantiene le proporzioni dell'immagine */
+        max-height: 300px; 
+    }
+    
+    .box-text {
+        font-size: 1rem; /* Riduce la dimensione del testo su mobile */
+        width: 80%;
+    }
+
+    .product-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 2px;
+        width: 100%;
+        
+    }
+
+    .product-item {
+        flex: 0 0 calc(25% - 2px); /* Mostra 4 items (25% each) */
+        scroll-snap-align: start;
+        min-width: 80px;
+    } 
+    .slide_container {
+        margin-top: -3px;
+    }
+    .look-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px; /* Mantiene solo il gap tra le immagini */
+    }
+    .look-gallery .look-card img {
+        width: 100%; /* Make images smaller */
+        height: auto;
+        object-fit: cover;
+        display: block;
+        margin: 0; /* Center images */
+    }
+
+    .look-card {
+        position: relative;
+        width: calc(50% - 2.5px); /* Due immagini per riga, considerando il gap */
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Evita problemi di spazi extra */
+    }
+    .look-card img {
+        width: 100%;
+        height: 90%; /* Riduce l'altezza */
+        object-fit: cover; /* Assicura che l'immagine riempia il contenitore */
+    }
+
+    .look-gallery {
+        width: auto;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    .look-gallery p{
+        font-size: 2vw;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(6, minmax(40px, 1fr));
+        gap: 1px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+        .product-item {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .product-item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    .product-text{
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+    .gtl-text-container h1{
+        font-size: 2rem;
+        margin: 0;                          
+    }
+    .gtl-text-container p{
+        font-size: 0.75rem;
+    }
+    .cta-button {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 5px 10px;
+
+    }
+    /* SUGGESTED PRODUCTS */
+    .products{
+        padding-bottom: 10px;
+        padding-left: 5px;
+    }
+    .products h3{
+        font-size: 0.50rem;
+    }
+    .price p{
+        font-size: 0.25rem;
+    }
+    .suggested-text h2{
+        font-size: 1.5rem;
+        margin: 0;                         
+        padding: 0;
+        padding-left: 5px;
+    }
+    .spam-conto {
+        width: auto;
+        margin: 0 auto;
+        padding: 10px 10px 0px 10px;
+        overflow-y: hidden;
+        margin-top: -5px;
+        gap: 10px;
+    }
+
+    .spam-conto p {
+        font-size: 0.8rem;
+        line-height: 1.2;
+        margin: 5px 0;
+    }
+
+    .spam-conto h2{
+        font-size: 2rem;
+        margin: 5px 0;
+    }
+
+    .spam-conto .content {
+        width: 100%;
+        padding: 0;
+    }
+
+    .container {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+/* FOOTER E BERSHKA MUSIC */
+    footer {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        position: relative;
+        overflow: hidden;
+        padding: 10px;
+        padding: 0;
+
+    }
+ 
+
+    .bershka-music {
+        width: auto ;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer-content,
+    .music-content {
+        width: 90%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .footer p,
+    .bershka-music p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    .footer-column{
+        display: none;
+    }
+    .footer-column.social{
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: center;
+    }
+    .footer-column.social {
+        display: flex;
+        justify-content: center; 
+        align-items: flex-start; 
+        gap: 20px; 
+        width: 100%; 
+        padding: 10px 0; 
+    }
+
+    .footer-column.social img {
+        width: 24px; /* dimensioni icone */
+        height: 24px;
+    }
+    .social-icons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .rett-nero{
+        padding-bottom: 20px;
+    }
+    .get-the-look {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        gap: 15px; 
+        padding: 20px 10px;
+    }
+    
+    .gtl-text-container {
+        text-align: center;
+        width: 90%;
+    }
+
+    .gtl-text-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 90%;
+        gap: 5px; 
+    }
+
+    .gtl-text-container h1 {
+        margin-bottom: 10px; 
+        font-size: 1.5rem;
+        padding: 0;
+    }
+
+    .gtl-text-container p {
+        margin: 0;
+        padding: 0 10px;
+        font-size: 0.50rem;
+        line-height: 1.4;
+    }
+    .text_wrapper p{
+        font-size: 0.75rem;
+    }
+    .text_wrapper h2{
+        font-size: 2rem;
+    }
+    .text_wrapper a, .spam-conto a{
+        font-size: 0.75rem;
+        padding: 5px 15px;
+    }
+    .cta-button{
+        font-size: 10px;
+        padding: 3.5px 7px;
+    }
+    .slideshow-container {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        position: relative;
+        overflow: hidden;
+        margin-top: -10px;
+        margin-bottom: 7px;
+    }
+
+    .slideshow-container img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+    }
+    .flex-container{
+        margin: 0;
+    }
+    .rett-nero, .products, .bershka-music, .spam-conto, .suggested-text, footer, .background-bianco{
+        position: static;
+        margin-top: -5px;
+    }
+    .box-slideshow {
+        position: static;
+    }
+    .suggested-product .price {
+        font-size: 0.45rem;
+        margin-top: 2px; 
+    }
+
+}
+@media (max-width: 1220px) {
+    
+    .flex-container{
+        margin: 0;
+    }
+    .rett-nero, .products, .bershka-music, .spam-conto, .suggested-text, footer, .background-bianco{
+        position: static;
+        margin-top: -5px;
+    }
+    .box-slideshow img{
+        position: relative;
+        margin-top: auto;
+    }
+    .box-slideshow {
+        position: relative; 
+        width: 100%;
+        height: auto;
+        margin-top: 47px;
+    }
+    .box-text {
+        position: absolute; 
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+        z-index: 2;
+    }
+    
+    .box-text h1 {
+        color: white;
+        font-size: 2.5rem;
+        text-transform: lowercase;
+        margin: 0;
+        white-space: nowrap;
+    }
+
+}
