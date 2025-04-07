@@ -942,10 +942,19 @@ footer {
     position: relative;
   }
   
-  .close-btn-log , .close-btn-reg{
+  .close-btn-log{
     position: absolute;
     top: 16px;
     left: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .close-btn-reg{
+    position: absolute;
+    top: 16px;
+    right: 16px;
     background: none;
     border: none;
     font-size: 24px;
