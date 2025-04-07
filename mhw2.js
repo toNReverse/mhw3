@@ -1,22 +1,25 @@
-// Apre la modale quando clicchi su "Accedi"
-document.querySelector('#linksRIGHT a:nth-child(2)').addEventListener('click', () => {
-    document.querySelector('#login-modal').classList.remove('hidden');
-    document.querySelector('#login-modal').classList.add('show');
+// Funzione per aprire una modale
+function apriModale(triggerSelector, modalSelector) {
+  document.querySelector(triggerSelector).addEventListener('click', () => {
+    const modale = document.querySelector(modalSelector);
+    modale.classList.remove('hidden');
+    modale.classList.add('show');
   });
-  
-  // Chiude la modale
-  document.querySelector('.close-btn-log').addEventListener('click', () => {
-    document.querySelector('#login-modal').classList.remove('show');
-    document.querySelector('#login-modal').classList.add('hidden');
+}
+
+// Funzione per chiudere una modale
+function chiudiModale(closeBtnSelector, modalSelector) {
+  document.querySelector(closeBtnSelector).addEventListener('click', () => {
+    const modale = document.querySelector(modalSelector);
+    modale.classList.remove('show');
+    modale.classList.add('hidden');
   });
-  
-// Apre la modale quando clicchi su "Carrello"
-  document.querySelector('#linksRIGHT a:nth-child(3)').addEventListener('click', () => {
-    document.querySelector('#reg-modal').classList.remove('hidden');
-    document.querySelector('#reg-modal').classList.add('show');
-  });
-  // Chiude la modale
-  document.querySelector('.close-btn-reg').addEventListener('click', () => {
-    document.querySelector('#reg-modal').classList.remove('show');
-    document.querySelector('#reg-modal').classList.add('hidden');
-  });  
+}
+
+// Apertura e chiusura modale "Accedi"
+apriModale('#linksRIGHT a:nth-child(2)', '#login-modal');
+chiudiModale('.close-btn-log', '#login-modal');
+
+// Apertura e chiusura modale "Carrello"
+apriModale('#linksRIGHT a:nth-child(3)', '#reg-modal');
+chiudiModale('.close-btn-reg', '#reg-modal');
