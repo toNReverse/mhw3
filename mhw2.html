@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="mhw2.css">
-  <script src="mhw2.js" defer></script>
+  <script src="./mhw2.js" defer></script>
 
   <title>Document</title>
 </head>
@@ -219,5 +219,40 @@
       </footer>
     </section>
   </header>
+  <div id="login-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-btn">&times;</button>
+      <img src="img/login-art.png" alt="Login Art" class="modal-img" />
+  
+      <h2 class="modal-title">Accedi o crea il tuo account</h2>
+  
+      <button class="facebook-btn">
+        <img src="img/facebook-login-icon.png" alt="Facebook" class="facebook-icon" />
+        CONTINUA CON FACEBOOK
+      </button>
+  
+      <p class="privacy-text">
+        Effettuando il login con il mio account social, accetto di collegare l’account ai sensi della <strong>Politica sulla privacy</strong>
+      </p>
+  
+      <form>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="E-mail"/>
+  
+        <label for="password">Password</label>
+        <div class="password-container">
+          <input type="password" id="password" placeholder="Password" />
+          <img src="./img/open-eye.png" alt="Mostra password" class="toggle-password" />
+        </div>
+  
+        <div class="login-options">
+          <label><input type="checkbox" /> Mantieni attiva la sessione</label>
+          <a href="#">Hai dimenticato la password?</a>
+        </div>
+  
+        <button type="submit" class="login-submit">ACCEDI</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

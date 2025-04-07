@@ -1,18 +1,12 @@
-/* MOBILE PART */
-document.addEventListener("DOMContentLoaded", function () {
-    const menuToggle = document.querySelector("#menu-mobile");
-    const linksContainer = document.querySelector("#linksLEFT"); // Il contenitore con i link
-
-    // Mostra/Nasconde il menu quando si clicca sull'icona
-    menuToggle.addEventListener("click", function (event) {
-        linksContainer.classList.toggle("menu-open");
-        event.stopPropagation(); // Evita che il click venga rilevato dal documento
-    });
-
-    // Chiude il menu se si clicca fuori
-    document.addEventListener("click", function (event) {
-        if (!linksContainer.contains(event.target) && !menuToggle.contains(event.target)) {
-            linksContainer.classList.remove("menu-open");
-        }
-    });
-});
+// Apre la modale quando clicchi su "Accedi"
+document.querySelector('#linksRIGHT a:nth-child(2)').addEventListener('click', () => {
+    document.querySelector('#login-modal').classList.remove('hidden');
+    document.querySelector('#login-modal').classList.add('show');
+  });
+  
+  // Chiude la modale
+  document.querySelector('.close-btn').addEventListener('click', () => {
+    document.querySelector('#login-modal').classList.remove('show');
+    document.querySelector('#login-modal').classList.add('hidden');
+  });
+  
