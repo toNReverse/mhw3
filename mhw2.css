@@ -1068,7 +1068,7 @@ footer {
     border: none;
     cursor: pointer;
   }
-  /* // */
+  /* /SHOPPING CART/ */
   .model.cart-empty {
     background-color: white;
     padding: 24px;
@@ -1147,5 +1147,103 @@ footer {
     border: none;
     border-radius: 8px;
     font-size: 14px;
+    cursor: pointer;
+  }
+
+  .model.cart-empty {
+    font-family: 'Whyte';
+    padding: 24px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 10px 150px 20px;
+  }
+  
+  .cart-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+.cart-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .favorites-btn {
+    border: 1.5px solid black;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    background-color: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+.heart-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+.cart-empty-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+
+
+.broken-heart {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 24px;
+  }
+  
+  .cart-empty-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.cart-empty-content p {
+    color: #111;
+    margin-top: 6px;
+    margin-bottom: 24px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+.discover-btn {
+    background-color: black;
+    color: white;
+    padding: 12px 32px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
   }
