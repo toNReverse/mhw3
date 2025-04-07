@@ -919,7 +919,7 @@ footer {
 
 }
 /* // */
-.modal {
+.modal{
     position: fixed;
     top: 0;
     right: 0;
@@ -946,7 +946,7 @@ footer {
     position: relative;
   }
   
-  .close-btn {
+  .close-btn-log , .close-btn-reg{
     position: absolute;
     top: 16px;
     left: 16px;
@@ -1021,19 +1021,17 @@ footer {
   
   .password-container {
     position: relative;
-    width: 100%;
+    display: flex;
+    align-items: center;
   }
-  
-
   
   .toggle-password {
     position: absolute;
-    right: 12px;
+    right: 10px; /* Distance from right edge */
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
+    width: 20px; /* Adjust size as needed */
     height: 20px;
-    object-fit: contain;
     cursor: pointer;
   }
   .eye-icon img{
@@ -1068,5 +1066,86 @@ footer {
     font-size: 14px;
     padding: 12px;
     border: none;
+    cursor: pointer;
+  }
+  /* // */
+  .model.cart-empty {
+    background-color: white;
+    padding: 24px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cart-header h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .cart-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .favorites-btn {
+    border: 1px solid black;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  
+  .close-btn {
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .cart-empty-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    text-align: center;
+  }
+  
+  .broken-heart {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .cart-empty-content h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  
+  .cart-empty-content p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+  
+  .discover-btn {
+    background-color: black;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
     cursor: pointer;
   }
