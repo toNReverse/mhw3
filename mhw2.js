@@ -44,7 +44,14 @@ chiudiNavModale('#nav-uomo');
 chiudiNavModale('#nav-bskteen');
 
 //
-document.querySelector('.search-container').addEventListener('click', () => {
-  document.querySelector('#home').style.display = 'none';
-  document.querySelector('#linksLEFT').style.display = 'none';
+document.querySelector('.search-container').addEventListener('click', function() {
+  const elementsToHide = [
+    document.querySelector('section'),
+    document.querySelector('#linksLEFT'),
+
+  ];
+
+  elementsToHide.forEach(el => {
+    if (el) el.style.display = 'none';
+  });
 });

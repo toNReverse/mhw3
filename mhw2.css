@@ -59,7 +59,9 @@ nav img {
     align-items: center;
     background-color: #F5F5F5;
     border-radius: 15px;
-    padding: 5px;
+    padding: 8px;
+    padding-right: 80px;
+    padding-left: 10px;
     gap: 5px;
     cursor: pointer;
 }
@@ -67,8 +69,8 @@ nav img {
 .search-icon {
     width: 16px;
     height: 16px;
-
 }
+
 #search-text::placeholder {
     color: black; 
 }   
@@ -87,6 +89,7 @@ nav img {
     width: 100%;
     height: auto;
     margin-top: 47px;
+    z-index: 0;
 }
 
 
@@ -1353,7 +1356,7 @@ footer {
   
   .emoji {
     font-size: 16px;
-  }
+  } 
   
   .arrow {
     font-size: 16px;
@@ -1369,3 +1372,10 @@ footer {
     color: grey;
     font-size: 10px;
   }
+  /* SEARCH BAR */
+  #linksRIGHT{
+    margin-left: auto;
+  }
+.navbar-container{
+    border: none;
+}
