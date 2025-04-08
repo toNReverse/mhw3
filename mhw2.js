@@ -46,7 +46,9 @@ chiudiNavModale('#nav-bskteen');
 let isSearchOpen = false;
 
 document.querySelector('.search-container').addEventListener('click', function() {
-    const searchText = document.querySelector('.search-text');
+    const searchText = document.querySelector('#search-text');
+    const searchIcon = document.querySelector('.search-icon');
+    const navbar = document.querySelector('.navbar-container');
     const elementsToToggle = [
         document.querySelector('section'),
         document.querySelector('#linksLEFT'),
@@ -61,6 +63,14 @@ document.querySelector('.search-container').addEventListener('click', function()
         }
     });
 
-    // Toggle search text
+    // Toglie il bordo da navbar 
+    navbar.style.borderBottom = isSearchOpen ? 'none' : '1px solid black';
+
+
+    // Attiva/disattiva la visibilità dell'input di ricerca
     searchText.textContent = isSearchOpen ? "CHIUDI" : "CERCA";
+    searchIcon.src = isSearchOpen ? "./img/close-icon.png" : "./img/54481.png";
+    
+    // Cambia il colore del testo dell'input di ricerca
+    document.querySelector('#search-page').style.display = isSearchOpen ? 'block' : 'none';
 });
