@@ -1,6 +1,22 @@
+// funzione per chiudere tutte le finestre di navigazione tranne quella attiva
+function chiudiAltriModaliNav(activeModalId) {
+    const navModals = ['#nav-donna', '#nav-uomo', '#nav-bskteen'];
+    
+    navModals.forEach(modalId => {
+        if (modalId !== activeModalId) {
+            const modal = document.querySelector(modalId);
+            if (modal) {
+                modal.classList.remove('show');
+                modal.classList.add('hidden');
+            }
+        }
+    });
+}
+
 // Funzione per aprire una modale
 function apriModale(triggerSelector, modalSelector) {
   document.querySelector(triggerSelector).addEventListener('click', () => {
+    chiudiAltriModaliNav(modalSelector); // chiudi gli altri prima di aprire il nuovo
     const modale = document.querySelector(modalSelector);
     modale.classList.remove('hidden');
     modale.classList.add('show');
