@@ -43,15 +43,24 @@ chiudiNavModale('#nav-donna');
 chiudiNavModale('#nav-uomo');
 chiudiNavModale('#nav-bskteen');
 
-//
+let isSearchOpen = false;
+
 document.querySelector('.search-container').addEventListener('click', function() {
-  const elementsToHide = [
-    document.querySelector('section'),
-    document.querySelector('#linksLEFT'),
+    const searchText = document.querySelector('.search-text');
+    const elementsToToggle = [
+        document.querySelector('section'),
+        document.querySelector('#linksLEFT'),
+    ];
 
-  ];
+    isSearchOpen = !isSearchOpen;
 
-  elementsToHide.forEach(el => {
-    if (el) el.style.display = 'none';
-  });
+    // Toggle elements visibility
+    elementsToToggle.forEach(el => {
+        if (el) {
+            el.style.display = isSearchOpen ? 'none' : '';
+        }
+    });
+
+    // Toggle search text
+    searchText.textContent = isSearchOpen ? "CHIUDI" : "CERCA";
 });
