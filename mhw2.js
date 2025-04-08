@@ -42,3 +42,9 @@ apriModale('#linksLEFT a:nth-child(3)', '#nav-bskteen');
 chiudiNavModale('#nav-donna');
 chiudiNavModale('#nav-uomo');
 chiudiNavModale('#nav-bskteen');
+
+//
+document.querySelector('.search-container').addEventListener('click', () => {
+  document.querySelector('#home').style.display = 'none';
+  document.querySelector('#linksLEFT').style.display = 'none';
+});
