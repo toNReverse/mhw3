@@ -23,3 +23,22 @@ chiudiModale('.close-btn-log', '#login-modal');
 // Apertura e chiusura modale "Carrello"
 apriModale('#linksRIGHT a:nth-child(3)', '#reg-modal');
 chiudiModale('.close-btn-reg', '#reg-modal');
+
+function chiudiNavModale(modalSelector) {
+  const navModale = document.querySelector(modalSelector);
+
+  navModale.addEventListener('mouseleave', () => {
+    navModale.classList.remove('show');
+    navModale.classList.add('hidden');
+  });
+}
+
+// Apertura modali Navbar
+apriModale('#linksLEFT a:nth-child(1)', '#nav-donna');
+apriModale('#linksLEFT a:nth-child(2)', '#nav-uomo');
+apriModale('#linksLEFT a:nth-child(3)', '#nav-bskteen');
+
+// Chiusura modali Navbar al mouseleave
+chiudiNavModale('#nav-donna');
+chiudiNavModale('#nav-uomo');
+chiudiNavModale('#nav-bskteen');
