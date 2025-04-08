@@ -61,6 +61,7 @@ nav img {
     border-radius: 15px;
     padding: 5px;
     gap: 5px;
+    cursor: pointer;
 }
 
 .search-icon {
@@ -68,11 +69,11 @@ nav img {
     height: 16px;
 
 }
-.search-input::placeholder {
+#search-text::placeholder {
     color: black; 
 }   
 
-.search-input {
+#search-text {
     border: none;
     outline: none;
     font-size: 12px;
@@ -1302,4 +1303,69 @@ footer {
   .modal-donna, .modal-uomo, .modal-bskteen {
     padding: 32px;
     position: relative;
+  }
+  /*BSKTEEN*/
+  .nav-content {
+    padding: 40px 60px;
+    background-color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  .nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-menu li {
+    margin-bottom: 12px;
+  }
+  
+  .nav-menu a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.2px;
+    transition: color 0.2s ease;
+  }
+  
+  .nav-menu a:hover {
+    color: #ff0055;
+  }
+  
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .badge-blue {
+    color: #007aff;
+  }
+  
+  .badge-pink {
+    color: #ff4081;
+  }
+  
+  .emoji {
+    font-size: 16px;
+  }
+  
+  .arrow {
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 2px;
+  }
+  
+  .special-link {
+    color: #ff0055;
+    font-weight: 600;
+  }
+  #off-txt{
+    color: grey;
+    font-size: 10px;
   }
