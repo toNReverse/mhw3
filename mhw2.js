@@ -73,4 +73,13 @@ document.querySelector('.search-container').addEventListener('click', function()
     
     // Cambia il colore del testo dell'input di ricerca
     document.querySelector('#search-page').style.display = isSearchOpen ? 'block' : 'none';
+
+
+});
+document.querySelectorAll('.right-icon img').forEach(heartIcon => {
+  heartIcon.addEventListener('click', function() {
+      // Toggle between filled and empty heart
+      const isFilled = this.src.includes('filled-hearth');
+      this.src = isFilled ? './img/hearth-search-page.png' : './img/filled-hearth-search-page.png';
+  });
 });
