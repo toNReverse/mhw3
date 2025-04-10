@@ -953,7 +953,7 @@ footer {
   font-size: 24px;
   cursor: pointer;
 }
-.close-btn-reg{
+.close-btn-cart{
   position: absolute;
   top: 16px;
   right: 16px;
@@ -1278,11 +1278,7 @@ line-height: 1;
   text-decoration: none;
 }
 
-@media (max-width: 500px) {
-  .modal{
-  display: none;
-  }
-}
+
 .modal-nav{
   position: fixed;
   top: 47px;

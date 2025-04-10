@@ -37,8 +37,8 @@ apriModale('#linksRIGHT a:nth-child(2)', '#login-modal');
 chiudiModale('.close-btn-log', '#login-modal');
 
 // Apertura e chiusura modale "Carrello"
-apriModale('#linksRIGHT a:nth-child(3)', '#reg-modal');
-chiudiModale('.close-btn-reg', '#reg-modal');
+apriModale('#linksRIGHT a:nth-child(3)', '#cart-modal');
+chiudiModale('.close-btn-cart', '#cart-modal');
 
 function chiudiNavModale(modalSelector) {
   const navModale = document.querySelector(modalSelector);
