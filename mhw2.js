@@ -99,3 +99,35 @@ document.querySelectorAll('.right-icon img').forEach(heartIcon => {
       this.src = isFilled ? './img/hearth-search-page.png' : './img/filled-hearth-search-page.png';
   });
 });
+
+/* MENU MOBILE */
+const openBtn = document.getElementById('menu-mobile');
+const closeBtn = document.getElementById('close-menu');
+const menu = document.getElementById('side-menu');
+
+openBtn.addEventListener('click', () => {
+  menu.classList.add('open');
+});
+
+closeBtn.addEventListener('click', () => {
+  menu.classList.remove('open');
+});
+
+// Tabs attivi
+const tabs = document.querySelectorAll('#gender-tabs .tab');
+const contents = document.querySelectorAll('.menu-content');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    // Aggiorna tab attivo
+    tabs.forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+
+    // Mostra il contenuto corretto
+    const gender = this.getAttribute('data-gender');
+    contents.forEach(content => content.style.display = 'none');
+    document.getElementById('menu-' + gender).style.display = 'block';
+  });
+});
