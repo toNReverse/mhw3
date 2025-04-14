@@ -1278,10 +1278,9 @@ line-height: 1;
   text-decoration: none;
 }
 
-
 .modal-nav{
   position: fixed;
-  top: 47px;
+  top: 54px;
   width: 100%;
   height: 450px;
   background-color: #ffffff;
@@ -1306,6 +1305,7 @@ line-height: 1;
   padding: 40px 60px;
   background-color: #fff;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
 }
 
 .nav-menu {
@@ -1505,8 +1505,8 @@ width: 18px;
 height: 18px;
 cursor: pointer;
 }
-/*  MOBILE */
 
+/*  MOBILE */
 /* MENU LATERALE */
 #side-menu {
 position: fixed;
@@ -1606,4 +1606,62 @@ cursor: pointer;
 #linksLEFT a {
   display: none;
 }
+}
+/* GTL */
+
+#nav-donna .nav-content, #nav-uomo .nav-content, #nav-bskteen .nav-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 40px 20px 40px;
+  align-items: flex-start; /* AGGIUNGI QUESTA RIGA */
+
+}
+.nav-menu {
+  width: 40%;
+  list-style: none;
+  padding: 0;
+}
+
+.get-the-look-nav {
+  width: 55%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.get-the-look-nav h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.look-grid {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.look-item {
+  max-width: 180px; /* aumentato da 120px */
+  text-align: center;
+}
+
+.look-item img {
+  width: 100%;
+  height: auto; /* assicura il mantenimento del rapporto */
+  transition: transform 0.3s ease;
+}
+
+.look-item img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.look-item p {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
 }
