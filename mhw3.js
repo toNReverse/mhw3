@@ -131,3 +131,79 @@ tabs.forEach(tab => {
     document.getElementById('menu-' + gender).style.display = 'block';
   });
 });
+
+/* API */
+const selector = document.getElementById('currency-selector');
+const menuValuta = document.getElementById('currency-menu');
+const dropdown = document.getElementById('currency-dropdown');
+
+// Mappa simboli-valuta
+const symbols = {
+  EUR: '€',
+  USD: '$',
+  GBP: '£',
+  JPY: '¥',
+  CAD: 'C$',
+  AUD: 'A$',
+  CHF: 'CHF'
+};
+
+const reverseSymbols = Object.fromEntries(
+  Object.entries(symbols).map(([code, symbol]) => [symbol, code])
+);
+
+selector.addEventListener('click', () => {
+  menuValuta.classList.toggle('hidden');
+});
+
+dropdown.addEventListener('change', () => {
+  const selectedCurrency = dropdown.value;
+  console.log('Valuta selezionata:', selectedCurrency);
+  menuValuta.classList.add('hidden');
+  updateExchangeRates(selectedCurrency);
+});
+
+function updateExchangeRates(toCurrency) {
+  // Qui includi tutte le classi che contengono prezzi
+  const priceSelectors = ['.price', '.price-red', '.price-old']; // Aggiungi qui altre classi
+  const priceElements = document.querySelectorAll(priceSelectors.join(', '));
+
+  priceElements.forEach(priceElement => {
+    const text = priceElement.textContent.trim();
+
+    // Regex dinamica con tutti i simboli presenti nella mappa
+    const currencySymbols = Object.values(symbols)
+      .map(s => s.replace(/[$^.*+?()[\]{}|\\]/g, '\\$&'))
+      .join('|');
+    const regex = new RegExp(`^([\\d,.]+)\\s*(${currencySymbols})$`);
+    const match = text.match(regex);
+
+    if (!match) return;
+
+    const amount = parseFloat(match[1].replace(',', '.'));
+    const symbol = match[2];
+    const fromCurrency = reverseSymbols[symbol];
+
+    if (fromCurrency === toCurrency) return;
+
+    const apiKey = '524b278bae218fb72665a5b7'; // La tua API Key
+    const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
+
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) throw new Error('Errore nella risposta API');
+        return response.json();
+      })
+      .then(json => {
+        const rate = json.conversion_rates[toCurrency];
+        if (!rate) return;
+
+        const converted = (amount * rate).toFixed(2);
+        const newSymbol = symbols[toCurrency] || toCurrency;
+        priceElement.textContent = `${converted} ${newSymbol}`;
+      })
+      .catch(error => {
+        console.error('Errore:', error);
+      });
+  });
+}
