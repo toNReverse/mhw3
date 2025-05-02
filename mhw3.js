@@ -132,10 +132,10 @@ tabs.forEach(tab => {
   });
 });
 
-/* API */
-const selector = document.getElementById('currency-selector');
+/* API CONVERSIONE VALUTA */
+const currencySelector = document.getElementById('currency-selector');
 const menuValuta = document.getElementById('currency-menu');
-const dropdown = document.getElementById('currency-dropdown');
+const currencyDropdown = document.getElementById('currency-dropdown');
 
 // Mappa simboli-valuta
 const symbols = {
@@ -152,12 +152,12 @@ const reverseSymbols = Object.fromEntries(
   Object.entries(symbols).map(([code, symbol]) => [symbol, code])
 );
 
-selector.addEventListener('click', () => {
+currencySelector.addEventListener('click', () => {
   menuValuta.classList.toggle('hidden');
 });
 
-dropdown.addEventListener('change', () => {
-  const selectedCurrency = dropdown.value;
+currencyDropdown.addEventListener('change', () => {
+  const selectedCurrency = currencyDropdown.value;
   console.log('Valuta selezionata:', selectedCurrency);
   menuValuta.classList.add('hidden');
   updateExchangeRates(selectedCurrency);
@@ -207,3 +207,38 @@ function updateExchangeRates(toCurrency) {
       });
   });
 }
+document.getElementById('language').addEventListener('change', () => {
+  const targetLang = document.getElementById('language').value;
+  const elements = document.querySelectorAll('.translate');
+
+  elements.forEach(el => {
+    const originalText = el.textContent;
+
+    fetch('https://libretranslate.de/translate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        q: originalText,
+        source: 'auto',
+        target: targetLang,
+        format: 'text'
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      el.textContent = data.translatedText;
+    })
+    .catch(err => {
+      console.error('Errore nella traduzione:', err);
+    });
+  });
+});
+/* API TRADUZIONE */
+/* API TRADUZIONE */
+const languageSelector = document.getElementById('language-selector');
+const languageMenu = document.getElementById('language-menu');
+
+// Toggle the visibility of the language menu
+languageSelector.addEventListener('click', () => {
+    languageMenu.classList.toggle('hidden');
+});
