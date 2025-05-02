@@ -186,7 +186,7 @@ function updateExchangeRates(toCurrency) {
 
     if (fromCurrency === toCurrency) return;
 
-    const apiKey = '524b278bae218fb72665a5b7'; // La tua API Key
+    const apiKey = 'INSERISCI API KEY :P';
     const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
 
     fetch(apiUrl)
