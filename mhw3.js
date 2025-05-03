@@ -222,7 +222,7 @@ languageSelect.addEventListener('change', () => {
     const selectedLang = languageSelect.value;
 
     // Select only specific tags for translation
-    const elements = document.querySelectorAll('#linksLEFT a, #gender-tabs a, .menu-content li, #linksRIGHT a, #search-text, .box-text, .product-text, .text_wrapper a, .gtl-text-container p, .cta-button, .suggested-text h2, .suggested-product h3, .spam-conto h2, .spam-conto p, .spam-conto a, .footer-container *'); //continua side page
+    const elements = document.querySelectorAll('#linksLEFT a, #gender-tabs a, .menu-content li, #linksRIGHT a, #search-text, .box-text, .product-text, .text_wrapper a, .gtl-text-container p, .cta-button, .suggested-text h2, .suggested-product h3, .spam-conto h2, .spam-conto p, .spam-conto a, .footer-container h3, .footer-container #traslate, .footer-container .small-text, .footer-container a, .modal-title, #facebook-access, .privacy-text, .login-options .traslate, .login-submit .traslate, .signup-link, .cart-header h2, .favorites-btn .traslate'); //continua side page
 
     elements.forEach(el => {
         const originalText = el.textContent.trim();
