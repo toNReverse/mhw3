@@ -135,7 +135,7 @@ tabs.forEach(tab => {
 /* API CONVERSIONE VALUTA */
 const currencySelector = document.getElementById('currency-selector');
 const menuValuta = document.getElementById('currency-menu');
-const currencyDropdown = document.getElementById('currency-dropdown');
+const currencyDropdown = document.getElementById('currency');
 
 // Mappa simboli-valuta
 const symbols = {
@@ -207,38 +207,51 @@ function updateExchangeRates(toCurrency) {
       });
   });
 }
-document.getElementById('language').addEventListener('change', () => {
-  const targetLang = document.getElementById('language').value;
-  const elements = document.querySelectorAll('.translate');
+/* API TRADUZIONE */
+const selector = document.getElementById('language-selector');
+const menuTraslate = document.getElementById('language-menu');
+const languageSelect = document.getElementById('language');
 
-  elements.forEach(el => {
-    const originalText = el.textContent;
-
-    fetch('https://libretranslate.de/translate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        q: originalText,
-        source: 'auto',
-        target: targetLang,
-        format: 'text'
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      el.textContent = data.translatedText;
-    })
-    .catch(err => {
-      console.error('Errore nella traduzione:', err);
-    });
-  });
+// Mostra/nasconde il menu a tendina
+selector.addEventListener('click', () => {
+  menuTraslate.classList.toggle('hidden');
 });
-/* API TRADUZIONE */
-/* API TRADUZIONE */
-const languageSelector = document.getElementById('language-selector');
-const languageMenu = document.getElementById('language-menu');
 
-// Toggle the visibility of the language menu
-languageSelector.addEventListener('click', () => {
-    languageMenu.classList.toggle('hidden');
+// Traduzione al cambio lingua
+languageSelect.addEventListener('change', () => {
+    const selectedLang = languageSelect.value;
+
+    // Select only specific tags for translation
+    const elements = document.querySelectorAll('#linksLEFT a, #gender-tabs a, .menu-content li, #linksRIGHT a, #search-text, .box-text, .product-text, .text_wrapper a, .gtl-text-container p, .cta-button, .suggested-text h2, .suggested-product h3, .spam-conto h2, .spam-conto p, .spam-conto a, .footer-container *'); //continua side page
+
+    elements.forEach(el => {
+        const originalText = el.textContent.trim();
+
+        // Ignore empty elements
+        if (!originalText) return;
+
+        // Save the original text if not already saved
+        if (!el.dataset.original) {
+            el.dataset.original = originalText;
+        }
+
+        // If the selected language is Italian, restore the original text
+        if (selectedLang === 'it') {
+            el.textContent = el.dataset.original;
+            return;
+        }
+
+        // Fetch the translation
+        fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(originalText)}&langpair=it|${selectedLang}`)
+            .then(res => res.json())
+            .then(data => {
+                el.textContent = data.responseData.translatedText;
+            })
+            .catch(err => {
+                console.error('Errore nella traduzione:', err);
+            });
+    });
+
+    // Hide the translation menu after selection
+    menuTraslate.classList.add('hidden');
 });
