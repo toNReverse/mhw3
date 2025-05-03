@@ -133,6 +133,9 @@ tabs.forEach(tab => {
 });
 
 /* API CONVERSIONE VALUTA */
+/* API CONVERSIONE VALUTA */
+
+// Selettori DOM
 const currencySelector = document.getElementById('currency-selector');
 const menuValuta = document.getElementById('currency-menu');
 const currencyDropdown = document.getElementById('currency');
@@ -148,14 +151,18 @@ const symbols = {
   CHF: 'CHF'
 };
 
-const reverseSymbols = Object.fromEntries(
-  Object.entries(symbols).map(([code, symbol]) => [symbol, code])
-);
+// Mappa inversa simbolo -> codice
+const reverseSymbols = {};
+for (const code in symbols) {
+  reverseSymbols[symbols[code]] = code;
+}
 
+// Mostra/nasconde il menu valuta
 currencySelector.addEventListener('click', () => {
   menuValuta.classList.toggle('hidden');
 });
 
+// Quando si seleziona una nuova valuta
 currencyDropdown.addEventListener('change', () => {
   const selectedCurrency = currencyDropdown.value;
   console.log('Valuta selezionata:', selectedCurrency);
@@ -163,29 +170,38 @@ currencyDropdown.addEventListener('change', () => {
   updateExchangeRates(selectedCurrency);
 });
 
+// Funzione per aggiornare i prezzi in base alla valuta selezionata
 function updateExchangeRates(toCurrency) {
-  // Qui includi tutte le classi che contengono prezzi
-  const priceSelectors = ['.price', '.price-red', '.price-old']; // Aggiungi qui altre classi
+  const priceSelectors = ['.price', '.price-red', '.price-old'];
   const priceElements = document.querySelectorAll(priceSelectors.join(', '));
 
   priceElements.forEach(priceElement => {
     const text = priceElement.textContent.trim();
 
-    // Regex dinamica con tutti i simboli presenti nella mappa
-    const currencySymbols = Object.values(symbols)
-      .map(s => s.replace(/[$^.*+?()[\]{}|\\]/g, '\\$&'))
-      .join('|');
-    const regex = new RegExp(`^([\\d,.]+)\\s*(${currencySymbols})$`);
-    const match = text.match(regex);
+    // Trova il simbolo alla fine della stringa
+    let matchedSymbol = null;
+    let symbolLength = 0;
 
-    if (!match) return;
+    for (const symbol of Object.values(symbols)) {
+      if (text.endsWith(symbol)) {
+        matchedSymbol = symbol;
+        symbolLength = symbol.length;
+        break;
+      }
+    }
 
-    const amount = parseFloat(match[1].replace(',', '.'));
-    const symbol = match[2];
-    const fromCurrency = reverseSymbols[symbol];
+    if (!matchedSymbol) return;
 
+    // Ottieni l'importo come numero
+    const amountText = text.slice(0, -symbolLength).trim().replace(',', '.');
+    const amount = parseFloat(amountText);
+    if (isNaN(amount)) return;
+
+    // Codice valuta di partenza
+    const fromCurrency = reverseSymbols[matchedSymbol];
     if (fromCurrency === toCurrency) return;
 
+    // API di conversione
     const apiKey = 'INSERISCI API KEY :P';
     const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
 
