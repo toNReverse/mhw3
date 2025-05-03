@@ -133,8 +133,6 @@ tabs.forEach(tab => {
 });
 
 /* API CONVERSIONE VALUTA */
-/* API CONVERSIONE VALUTA */
-
 // Selettori DOM
 const currencySelector = document.getElementById('currency-selector');
 const menuValuta = document.getElementById('currency-menu');
@@ -237,27 +235,27 @@ selector.addEventListener('click', () => {
 languageSelect.addEventListener('change', () => {
     const selectedLang = languageSelect.value;
 
-    // Select only specific tags for translation
+    // Seleziona solo tag specifici per la traduzione    
     const elements = document.querySelectorAll('#linksLEFT a, #gender-tabs a, .menu-content li, #linksRIGHT a, #search-text, .box-text h1, .product-text, .text_wrapper a, .gtl-text-container p, .cta-button, .suggested-text h2, .suggested-product h3, .spam-conto h2, .spam-conto p, .spam-conto a, .footer-container h3, .footer-container #traslate, .footer-container .small-text, .footer-container a, .modal-title, #facebook-access, .privacy-text, .login-options .traslate, .login-submit .traslate, .signup-link, .cart-header h2, .favorites-btn .traslate, .cart-empty-content h3, .cart-empty-content p, .cart-empty-content .discover-btn, .nav-menu a, .top-search-tag .traslate, .top-search-suggest h3, .product-name'); //continua side page
 
     elements.forEach(el => {
         const originalText = el.textContent.trim();
 
-        // Ignore empty elements
+        // Ignora gli elementi vuoti
         if (!originalText) return;
 
-        // Save the original text if not already saved
+        // Salva il testo originale se non è già stato salvato
         if (!el.dataset.original) {
             el.dataset.original = originalText;
         }
 
-        // If the selected language is Italian, restore the original text
+        // Se la lingua selezionata è l'italiano, ripristina il testo originale
         if (selectedLang === 'it') {
             el.textContent = el.dataset.original;
             return;
         }
 
-        // Fetch the translation
+        // Fetch la traduzione
         fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(originalText)}&langpair=it|${selectedLang}`)
             .then(res => res.json())
             .then(data => {
@@ -268,6 +266,6 @@ languageSelect.addEventListener('change', () => {
             });
     });
 
-    // Hide the translation menu after selection
+    // Chiudi il menu dopo la selezione
     menuTraslate.classList.add('hidden');
 });
