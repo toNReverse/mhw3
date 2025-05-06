@@ -163,9 +163,10 @@ currencySelector.addEventListener('click', () => {
 // Quando si seleziona una nuova valuta
 currencyDropdown.addEventListener('change', () => {
   const selectedCurrency = currencyDropdown.value;
-  console.log('Valuta selezionata:', selectedCurrency);
-  menuValuta.classList.add('hidden');
-  updateExchangeRates(selectedCurrency);
+  console.log('Valuta selezionata:', selectedCurrency); // Viene stampato il codice in console.
+  menuValuta.classList.add('hidden'); // Il menu viene chiuso.
+  updateExchangeRates(selectedCurrency); // Viene chiamata updateExchangeRates per convertire i prezzi.
+
 });
 
 // Funzione per aggiornare i prezzi in base alla valuta selezionata
@@ -174,12 +175,15 @@ function updateExchangeRates(toCurrency) {
   const priceElements = document.querySelectorAll(priceSelectors.join(', '));
 
   priceElements.forEach(priceElement => {
-    const text = priceElement.textContent.trim();
+    const text = priceElement.textContent.trim(); // Per ogni prezzo ottiene il testo e lo ripulisce.
+
 
     // Trova il simbolo alla fine della stringa
     let matchedSymbol = null;
     let symbolLength = 0;
 
+    /* Cerca quale simbolo di valuta è presente nel testo, una volta trovato separa l’importo (amountText) dal simbolo 
+    e converte il testo in numero (parseFloat). */
     for (const symbol of Object.values(symbols)) {
       if (text.endsWith(symbol)) {
         matchedSymbol = symbol;
@@ -196,8 +200,9 @@ function updateExchangeRates(toCurrency) {
     if (isNaN(amount)) return;
 
     // Codice valuta di partenza
-    const fromCurrency = reverseSymbols[matchedSymbol];
-    if (fromCurrency === toCurrency) return;
+    const fromCurrency = reverseSymbols[matchedSymbol]; // Determina da quale valuta stai convertendo.
+    if (fromCurrency === toCurrency) return;  // Se la valuta selezionata è la stessa di quella attuale, non fa nulla.
+
 
     // API di conversione
     const apiKey = 'INSERISCI API KEY :P';
@@ -212,7 +217,7 @@ function updateExchangeRates(toCurrency) {
         const rate = json.conversion_rates[toCurrency];
         if (!rate) return;
 
-        const converted = (amount * rate).toFixed(2);
+        const converted = (amount * rate).toFixed(2); // Moltiplica l’importo originale per il tasso di cambio e arrotonda a due decimali.
         const newSymbol = symbols[toCurrency] || toCurrency;
         priceElement.textContent = `${converted} ${newSymbol}`;
       })
